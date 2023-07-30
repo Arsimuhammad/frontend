@@ -4,8 +4,10 @@ import ModalProvider from '@/providers/modal-provider'
 import ToastProvider from '@/providers/toast-provider'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import { ClerkProvider } from '@clerk/nextjs'
 
 import './globals.css'
+// import { ClerkProvider } from '@clerk/nextjs/dist/types/components.server'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -21,6 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <ClerkProvider>
       <body className={font.className}>
         <ToastProvider />
         <ModalProvider />
@@ -28,6 +31,7 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      </ClerkProvider>
     </html>
   )
 }
